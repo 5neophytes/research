@@ -1,4 +1,4 @@
-**Links and Images** 
+**LImages** 
 
 1. Location of the obd port can be found here:
    
