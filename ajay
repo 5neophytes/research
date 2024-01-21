@@ -1,0 +1,3 @@
+An idea to optimize the calculation of carbon footprint score is to use a deep learning model which considers different external factors like weather, traffic etc and then gives the carbon footprint score.
+This can help centralize the carbon footprint score across all states instead of storing the data for every state on cloud.
+This can also help us inculcate deep learning in our project since the original project is turning out to be a little easier than earlier thought.
