@@ -1,0 +1,19 @@
+Analysis of traffic using vehicle analytics
+
+•	Collect data from multiple runs from the car. 
+•	Feed it to the Machine Learning Model
+•	Model will analyze the rpm and other factors, then give analysis of if car is stationary or moving. 
+•	With the following detail we can find out carbon emission using formula, the carbon emission of car in running and stationary state will be different. 
+
+o	Example-
+If RPM on a regular case is below 1000rpm(excluding initial time of the vehicle as that time rpms are higher to make the car come to an optimal temperature and other factors) then vehicle in idle state with gear in neutral. Else its in moving motion. 
+Initially in machine learning model few edge cases will be removed. 
+
+Classify the traffic conditions based on the RPM values:
+•	Low Traffic: RPM below a certain threshold (indicating smooth, consistent driving conditions).
+•	Moderate Traffic: RPM above the low traffic threshold but below the high traffic threshold.
+•	High Traffic: RPM above a certain threshold (indicating stop-and-go traffic or congestion).
+
+Correlate the traffic analysis results with other parameters such as vehicle speed, throttle position, or fuel consumption to gain deeper insights into traffic patterns and driving behaviour.
+RPM alone may not provide a comprehensive picture of traffic conditions, as other factors such as vehicle speed, acceleration, and braking behavior also influence traffic analysis
+
