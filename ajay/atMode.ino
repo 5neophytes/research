@@ -1,5 +1,5 @@
-# this code is to put the hc-05 into AT mode 
-# after putting into at mode, AT commands are to be put into the Serial Monitor | all commands will be replied with OK if working properly
+// this code is to put the hc-05 into AT mode 
+// after putting into at mode, AT commands are to be put into the Serial Monitor | all commands will be replied with OK if working properly
 
 #include <SoftwareSerial.h>
 
