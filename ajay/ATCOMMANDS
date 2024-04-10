@@ -1,0 +1,10 @@
+// these commands are to bind the hc-05 module to the obd port once the hc-05 has been put into AT mode
+
+AT+RESET
+AT+ORGL (Set to original)
+AT+ROLE=1 (Set to Master)
+AT+CMODE=0 (Set connect to a specific address)
+AT+BIND=1234,56,789c72
+AT+INIT (Need to connect)
+AT+PAIR=1234,56,789c72,20 (20 means 20 second timeout)
+AT+LINK=1234,56,789c72
