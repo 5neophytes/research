@@ -3,7 +3,7 @@
 
 #include <SoftwareSerial.h>
 
-SoftwareSerial BTSerial(10, 11); // RX | TX
+SoftwareSerial BTSerial(3,2); // TX | RX of hc-05
 
 void setup()
 {
@@ -11,7 +11,7 @@ void setup()
   digitalWrite(9, HIGH);
   Serial.begin(9600);
   Serial.println("Enter AT commands:");
-  BTSerial.begin(38400);  // HC-05 default speed in AT command more
+  BTSerial.begin(38400);  // HC-05 default speed in AT command mode
 }
 
 void loop()
