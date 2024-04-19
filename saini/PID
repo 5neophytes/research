@@ -1,0 +1,40 @@
+Documentation of ELM327 that was used for reference - https://www.elmelectronics.com/DSheets/ELM327DSH.pdf
+
+For talking with the vehicle we usually requires a 4 bit command . The first 2 bits are the test modes, namely
+01 - show current data
+02 - show freeze frame data
+03 - show diagnostic trouble codes
+04 - clear trouble codes and stored values
+05 - test results, oxygen sensors
+06 - test results, non-continuously monitored
+07 - show ‘pending’ trouble codes
+08 - special control mode
+09 - request vehicle information
+0A - request permanent trouble codes
+
+We will be using 01 as we need the the current / real time data.
+The next 2 bits are the PID commands/request that we need to gather the data for our calculation.Some of the required PID commands are-
+
+Engine Load - PID 04: Calculated engine load, which indicates how much of the engine's capacity is currently being used.
+Engine Coolant Temperature-PID 05: Engine coolant temperature, which can affect fuel combustion efficiency.
+Engine RPM (Revolutions Per Minute)-PID 0C: Engine speed, which indicates how fast the engine is running.
+Vehicle Speed-PID 0D: Vehicle speed, which is useful for calculating emissions per distance traveled.
+Intake Air Temperature-PID 0F: Intake air temperature, which affects air density and can influence fuel combustion.
+Mass Air Flow-PID 10: Mass air flow sensor (MAF) air flow rate, which indicates the amount of air entering the engine. This, combined with fuel flow, helps calculate fuel efficiency.
+Throttle Position-PID 11: Throttle position, which shows how open or closed the throttle valve is, affecting fuel delivery.
+Fuel System Status-PID 03: Fuel system status, to ensure the fuel system is operating correctly.
+Fuel Pressure-PID 0A: Fuel pressure, which can affect fuel delivery and combustion.
+Oxygen Sensors (Additional)-PID 16-1B: Additional Oxygen Sensor data for more precise air-fuel ratio calculations.
+Fuel Rate-PID 5E: Engine fuel rate, which shows how much fuel is being consumed by the engine.
+Ambient Air Temperature-PID 46: Ambient air temperature, which can affect fuel combustion.
+
+Now we will be getting the response which will be in a format of ( a header + the PID command we requrested + data), 
+the data will be in HEX format and we will have to convert it into decimal to get the values.
+Eg- to find the coolant value we will give the command >01 05 and the response would be received in the format 41 05 7B
+41 05 shows that this is a response to a mode 1 request for PID 05, while the 7B is the desired data. Converting the hexadecimal 7B to decimal, one gets 7 x 16 + 11 = 123
+
+Eg2-a request for the engine rpm. request will be >01 0C If the engine is running, the response might be: 41 0C 1A F8 The returned value (1A F8) is actually a two byte hex number 
+that must be converted to a decimal value to be useful. Converting it, we get a value of 6904, which seems like a very high value for engine rpm.That is because rpm is sent in increments of 1/4 rpm.
+To convert to the actual engine speed, we need to divide the 6904 by 4. The final value will be 1726 rpm
+
+
