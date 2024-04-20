@@ -8,3 +8,5 @@ AT+BIND=1234,56,789c72
 AT+INIT (Need to connect)
 AT+PAIR=1234,56,789c72,20 (20 means 20 second timeout)
 AT+LINK=1234,56,789c72
+
+// WHEN PUTTING IN AT MODE, DISCONNECT HC05 Voltage Wire while giving power to arduino.  Connect the voltage wire to hc05 once the code is uploaded.
